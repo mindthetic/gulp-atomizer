@@ -78,11 +78,30 @@ module.exports = function (options = {}) {
     // get the actual css
     var cssOut = acss.getCss(finalConfig, cssOptions)
 
+
+
     // create the output file
     // (take the metadata from most recent file)
     var atomicFile = latestFile.clone({contents: false})
     atomicFile.path = path.join(latestFile.base, outfile)
-    atomicFile.contents = new Buffer(cssOut)
+
+    var isHtmlfile = outfile.match(/.html$/)
+
+    if (isHtmlfile) {
+        // Create contents for CSS HTML file
+        var filename = outfile.slice(0, -5)
+        var htmlBefore = '<dom-module id="' + filename + '">\n\t<template>\n\t\t<style>\n'
+        var htmlAfter = '\t\t</style>\n\t</template>\n</dom-module>'
+
+        cssOut = htmlBefore + cssOut + htmlAfter
+
+        atomicFile.contents = new Buffer(cssOut)
+    }
+
+    else {
+        // Create contents for CSS file
+        atomicFile.contents = new Buffer(cssOut)
+    }
 
     // all done!
     this.push(atomicFile)
