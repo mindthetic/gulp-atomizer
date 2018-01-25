@@ -1,6 +1,6 @@
 {
-  "name": "gulp-atomizer",
-  "version": "3.0.7",
+  "name": "@mindthetic/gulp-atomizer",
+  "version": "3.1.7",
   "description": "Gulp plugin for Atomizer",
   "tags": "gulpplugin",
   "main": "index.js",
@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/acss-io/gulp-atomizer#readme",
   "dependencies": {
+    "@mindthetic/atomizer": "^3.4.6",
     "array-uniq": "^1.0.3",
-    "atomizer": "^3.3.2",
     "event-stream": "^3.3.2",
     "lodash": "^3.10.1",
     "through2": "^2.0.0",

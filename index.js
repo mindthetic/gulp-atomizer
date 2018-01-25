@@ -1,6 +1,6 @@
 /* eslint-env node, gulp */
 
-var Atomizer = require('atomizer')
+var Atomizer = require('@mindthetic/atomizer')
 var arrayUniq = require('array-uniq')
 var path = require('path')
 var through = require('through2')
